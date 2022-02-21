@@ -7,7 +7,7 @@ fun isJustNow(secondCount: Int): Boolean {
     return (secondCount >= 0) && (secondCount < 60)
 }
 
-fun isMinuts(secondCount: Int): Boolean {
+fun isMinutes(secondCount: Int): Boolean {
     return (secondCount >= 60) && (secondCount < 60 * 60)
 }
 
@@ -26,7 +26,7 @@ fun isYesterday(secondCount: Int): Boolean {
 fun agoToText(secondCount: Int): String {
     val result: String = when {
         isJustNow(secondCount) -> "был(а) только что"
-        isMinuts(secondCount) -> convertMinutes(secondCount)
+        isMinutes(secondCount) -> convertMinutes(secondCount)
         isHours(secondCount) -> convertHours(secondCount)
         isToday(secondCount) -> "был(а) сегодня"
         isYesterday(secondCount) -> "был(а) вчера"
