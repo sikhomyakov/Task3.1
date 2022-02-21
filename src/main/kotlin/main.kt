@@ -1,6 +1,6 @@
 fun main() {
 
-    println(agoToText(60 * 4))
+    println(agoToText(60))
 }
 
 fun isJustNow(secondCount: Int): Boolean {
@@ -23,10 +23,6 @@ fun isYesterday(secondCount: Int): Boolean {
     return (secondCount >= 2 * 24 * 60 * 60) && (secondCount < 3 * 24 * 60 * 60)
 }
 
-fun isLongTimeAgo(secondCount: Int): Boolean {
-    return secondCount >= 24 * 60 * 60 * 3
-}
-
 fun agoToText(secondCount: Int): String {
     val result: String = when {
         isJustNow(secondCount) -> "был(а) только что"
@@ -34,29 +30,24 @@ fun agoToText(secondCount: Int): String {
         isHours(secondCount) -> convertHours(secondCount)
         isToday(secondCount) -> "был(а) сегодня"
         isYesterday(secondCount) -> "был(а) вчера"
-        isLongTimeAgo(secondCount) -> "был(а) давно"
-        else -> "hz"
+        else -> "был(а) давно"
     }
     return result
 }
 
-fun convertMinutes(seconds: Int): String {
-    val minutes = seconds / 60
+fun convertMinutes(secondCount: Int): String {
+    val minutes = secondCount / 60
     val minutesCase: String = when {
         (minutes % 10 == 1 && minutes != 11) -> "минуту"
         ((minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4) &&
                 (minutes != 12) && (minutes != 13) && (minutes != 14)) -> "минуты"
         else -> "минут"
     }
-
-    if (minutes == 1)
-        return "минуту назад"
-
     return "был(а) $minutes $minutesCase назад"
 }
 
-fun convertHours(seconds: Int): String {
-    val hours = seconds / 3600
+fun convertHours(secondCount: Int): String {
+    val hours = secondCount / 3600
     val hoursCase = when {
         (hours == 1 || hours == 21) -> "час"
         (hours > 1 && hours < 5 || hours > 21 && hours < 25) -> "часа"
