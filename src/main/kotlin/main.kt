@@ -35,8 +35,8 @@ fun agoToText(secondCount: Int): String {
     return result
 }
 
-fun convertMinutes(secondCount: Int): String {
-    val minutes = secondCount / 60
+fun convertMinutes(seconds: Int): String {
+    val minutes = seconds / 60
     val minutesCase: String = when {
         (minutes % 10 == 1 && minutes != 11) -> "минуту"
         ((minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4) &&
@@ -46,8 +46,8 @@ fun convertMinutes(secondCount: Int): String {
     return "был(а) $minutes $minutesCase назад"
 }
 
-fun convertHours(secondCount: Int): String {
-    val hours = secondCount / 3600
+fun convertHours(seconds: Int): String {
+    val hours = seconds / 3600
     val hoursCase = when {
         (hours == 1 || hours == 21) -> "час"
         (hours > 1 && hours < 5 || hours > 21 && hours < 25) -> "часа"
