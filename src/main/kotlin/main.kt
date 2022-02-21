@@ -1,6 +1,6 @@
 fun main() {
 
-    println(agoToText(60 * 59 * 24))
+    println(agoToText(60 * 4))
 }
 
 fun isJustNow(secondCount: Int): Boolean {
@@ -52,7 +52,7 @@ fun convertMinutes(seconds: Int): String {
     if (minutes == 1)
         return "минуту назад"
 
-    return "$minutes $minutesCase назад"
+    return "был(а) $minutes $minutesCase назад"
 }
 
 fun convertHours(seconds: Int): String {
